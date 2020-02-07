@@ -20,7 +20,12 @@
 import React, { useState } from 'react';
 import { EuiComboBox } from '@elastic/eui';
 
-export const MultiFilter = ({ datatable, columns, selected = [], onChange }) => {
+export const MultiFilter = ({
+  datatable,
+  columns = datatable.columns.map(column => column.name),
+  selected = [],
+  onChange,
+}) => {
   const toOption = value => ({
     label: value.column + ':' + value.value,
     value,
