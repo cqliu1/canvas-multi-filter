@@ -4,7 +4,7 @@
   "description": "Enables a MultiFilter component for Canvas",
   "main": "index.js",
   "kibana": {
-    "version": "7.5.0",
+    "version": "7.5.2",
     "templateVersion": "1.0.0"
   },
   "license": "Unlicense",
