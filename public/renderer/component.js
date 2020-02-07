@@ -20,7 +20,7 @@
 import React, { useState } from 'react';
 import { EuiComboBox } from '@elastic/eui';
 
-export const MultiFilter = ({ datatable, selected = [], onChange }) => {
+export const MultiFilter = ({ datatable, columns, selected = [], onChange }) => {
   const toOption = value => ({
     label: value.column + ':' + value.value,
     value,
@@ -29,15 +29,13 @@ export const MultiFilter = ({ datatable, selected = [], onChange }) => {
   const [selectedOptions, setSelectedOptions] = useState(selected.map(toOption));
 
   // Create a collection of groupings of options
-  const groupings =
-    ((acc, column) => {
-      const objs = datatable.rows.map(row => ({ column, value: row[column] }));
-      acc[column] = Array.from(new Set(objs.map(item => item.value))).map(value =>
-        objs.find(item => item.value === value)
-      );
-      return acc;
-    },
-    {});
+  const groupings = columns.reduce((acc, column) => {
+    const objs = datatable.rows.map(row => ({ column, value: row[column] }));
+    acc[column] = Array.from(new Set(objs.map(item => item.value))).map(value =>
+      objs.find(item => item.value === value)
+    );
+    return acc;
+  }, {});
 
   // Create the appropriately-shaped choices for the drop down.
   const options = Object.keys(groupings).map(group => ({
