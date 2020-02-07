@@ -20,13 +20,13 @@
 import { multiFilter as multiFilterRenderer } from './renderer';
 import { multiFilter as multiFilterElement } from './element';
 import { multiFilterControl as multiFitlerControlFn } from './function';
-import { multiFilterControl as multiFitlerControlView } from './view';
+import { multifilterControl as multiFilterControlView } from './view';
 
 const elements = [multiFilterElement];
 
 const browserFunctions = [multiFitlerControlFn];
 
-const views = [multiFitlerControlView];
+const views = [multiFilterControlView];
 
 const renderers = [multiFilterRenderer];
 
@@ -34,6 +34,6 @@ const renderers = [multiFilterRenderer];
 kbnInterpreter.register({
   elements,
   browserFunctions,
-  views,
+  viewUIs: views,
   renderers,
 });

@@ -1,8 +1,0 @@
-{
-  "id": "canvasMultiFilter",
-  "version": "7.5.2",
-  "server": false,
-  "ui": true,
-  "requiredPlugins": ["navigation"],
-  "optionalPlugins": []
-}
