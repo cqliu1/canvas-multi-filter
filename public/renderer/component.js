@@ -18,6 +18,7 @@
  */
 
 import React, { useState } from 'react';
+import { get } from 'lodash';
 import { EuiComboBox } from '@elastic/eui';
 
 export const MultiFilter = ({
@@ -49,6 +50,19 @@ export const MultiFilter = ({
   }));
 
   const onChangeHandler = items => {
+    if (items.length > 0) {
+      // Keep only latest selected value per column
+      items = items.reduce((acc, item) => {
+        const selectionIndex = acc.findIndex(
+          option => get(option, 'value.column') === get(item, 'value.column')
+        );
+        if (selectionIndex !== -1) {
+          acc[selectionIndex] = item;
+          return acc;
+        }
+        return acc.concat(item);
+      }, []);
+    }
     setSelectedOptions(items);
   };
 
