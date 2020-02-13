@@ -1,6 +1,6 @@
 {
   "name": "canvas-multi-filter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Enables a MultiFilter component for Canvas",
   "main": "index.js",
   "kibana": {
